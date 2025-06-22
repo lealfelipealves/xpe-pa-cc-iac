@@ -5,6 +5,8 @@ terraform {
       version = "0.34.0"
     }
   }
+  
+  backend "s3" {}
 }
 
 provider "mgc" {
