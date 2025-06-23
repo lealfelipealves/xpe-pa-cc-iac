@@ -31,24 +31,38 @@ variable "secret_key" {
 variable "k8s_cluster" {
   description = "Configuração da K8S Cluster"
   type = object({
-    name           = string
-    version        = string
-    node_pool_name = string
-    flavor_name    = string
-    replicas       = number
-    min_replicas   = number
-    max_replicas   = number
+    name                 = string
+    version              = string
+    node_pool_name       = string
+    flavor_name          = string
+    replicas             = number
+    min_replicas         = number
+    max_replicas         = number
     enabled_server_group = bool
   })
 
   default = {
-    name           = "cluster"
-    version        = "v1.32.3"
-    node_pool_name = "cluster-node-pool"
-    flavor_name    = "cloud-k8s.gp1.small"
-    replicas       = 1
-    min_replicas   = 0
-    max_replicas   = 2
+    name                 = "cluster"
+    version              = "v1.32.3"
+    node_pool_name       = "cluster-node-pool"
+    flavor_name          = "cloud-k8s.gp1.small"
+    replicas             = 1
+    min_replicas         = 0
+    max_replicas         = 2
     enabled_server_group = true
   }
+}
+
+
+
+variable "ecr_repositories" {
+  type = list(object({
+    name = string
+  }))
+
+  default = [
+    {
+      name = "app/production/backend"
+    }
+  ]
 }
