@@ -1,5 +1,5 @@
 resource "aws_cognito_user_pool" "this" {
-  name = "cpf-pool"
+  name = var.user_pool.name
 
   lifecycle {
     ignore_changes = [
@@ -25,7 +25,7 @@ resource "aws_cognito_user_pool" "this" {
 }
 
 resource "aws_cognito_user_pool_client" "this" {
-  name         = "cpf-client"
+  name         = var.user_pool.client_name
   user_pool_id = aws_cognito_user_pool.this.id
 
   generate_secret = false

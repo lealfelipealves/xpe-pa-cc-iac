@@ -3,11 +3,6 @@ import {
   AdminCreateUserCommand,
   AdminSetUserPasswordCommand,
 } from "@aws-sdk/client-cognito-identity-provider";
-// import { fromIni } from "@aws-sdk/credential-provider-ini";
-// const client = new CognitoIdentityProviderClient({
-//   region: "us-east-1",
-//   credentials: fromIni({ profile: "fiap-aws-sso" }),
-// });
 
 const client = new CognitoIdentityProviderClient({});
 
@@ -57,7 +52,7 @@ export const handler = async (event: any) => {
         },
         {
           Name: "email",
-          Value: `${cpf}@exemplo.com`,
+          Value: `${cpf}@xpe-pa-cc-example.com.br`,
         },
       ],
       DesiredDeliveryMediums: [], // evita envio de e-mail
@@ -71,7 +66,7 @@ export const handler = async (event: any) => {
       new AdminSetUserPasswordCommand({
         UserPoolId: USER_POOL_ID,
         Username: cpf,
-        Password: "SenhaForteOculta123!",
+        Password: `Pass1234$`,
         Permanent: true,
       })
     );

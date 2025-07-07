@@ -17,18 +17,6 @@ variable "tags" {
   type        = map(string)
 }
 
-variable "user_pool_name" {
-  type        = string
-  description = "O nome do pool de usuários"
-  default     = "default-user-pool"
-}
-
-variable "user_pool_client_name" {
-  type        = string
-  description = "The name of the user pool client"
-  default     = "default-app-client"
-}
-
 variable "lambda_exec_role_name" {
   type        = string
   description = "The secret of the user pool client"
@@ -57,4 +45,29 @@ variable "gateway_name" {
   type        = string
   description = "The name of the gateway"
   default     = "default-gateway"
+}
+
+
+variable "user_pool" {
+  description = "Configuração do Cognito"
+  type = object({
+    name        = string
+    client_name = string
+  })
+
+  default = {
+    name        = "user-pool"
+    client_name = "user-pool-client"
+  }
+}
+
+variable "gateway" {
+  description = "Configuração do Gateway"
+  type = object({
+    name = string
+  })
+
+  default = {
+    name = "default-gateway"
+  }
 }

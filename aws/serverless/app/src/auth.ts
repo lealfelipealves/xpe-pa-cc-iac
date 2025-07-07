@@ -52,7 +52,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
       UserPoolId: USER_POOL_ID,
       AuthParameters: {
         USERNAME: cpf,
-        PASSWORD: "SenhaForteOculta123!", // mesma senha definida
+        PASSWORD: "Pass1234$", // mesma senha definida
       },
     })
 
